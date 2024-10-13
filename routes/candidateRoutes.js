@@ -92,7 +92,7 @@ router.get('/vote/:candidateID', jwtAuthMiddleware, async (req, res)=>{
     // user can only vote once
     
     candidateID = req.params.candidateID;
-    userId = req.user.id;
+    userId = req.user.id; // user id from token
 
     try{
         // Find the Candidate document with the specified candidateID
@@ -106,7 +106,7 @@ router.get('/vote/:candidateID', jwtAuthMiddleware, async (req, res)=>{
             return res.status(404).json({ message: 'user not found' });
         }
         if(user.role == 'admin'){
-            return res.status(403).json({ message: 'admin is not allowed'});
+            return res.status(403).json({ message: 'A dmin is not allowed to vote'});
         }
         if(user.isVoted){
             return res.status(400).json({ message: 'You have already voted' });
