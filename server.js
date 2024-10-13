@@ -11,6 +11,6 @@ app.get('/name',(req,res)=>{
     res.send('Very soon names will be listed in it...')
 })
 app.listen(port,()=>{
-    console.log(`App is listening at port ${port}`);
+    console.log(`Server is listening at port ${port}`);
 })
 
