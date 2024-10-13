@@ -8,7 +8,7 @@ router.post('/signup', async (req, res) =>{
     try{
         const data = req.body // Assuming the request body contains the User data
 
-        // Check if there is already an admin user
+        // Check if there is already an admin user(voter can't be admin)
         const adminUser = await User.findOne({ role: 'admin' });
         if (data.role === 'admin' && adminUser) {
             return res.status(400).json({ error: 'Admin user already exists' });
